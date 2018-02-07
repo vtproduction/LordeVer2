@@ -2,6 +2,8 @@ package midsummer.com.lordecalculatormidsummerv2.model.kqsx;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.List;
+
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 
@@ -82,7 +84,40 @@ public class KQXS extends RealmObject {
                 '}';
     }
 
-    void setData(int[] data) throws Exception {
+    public int[] getData(){
+        int[] data = new int[27];
+        data[0] = getGDB();
+        data[1] = getG1();
+        data[2] = getG2_1();
+        data[3] = getG2_2();
+        data[4] = getG3_1();
+        data[5] = getG3_2();
+        data[6] = getG3_3();
+        data[7] = getG3_4();
+        data[8] = getG3_5();
+        data[9] = getG3_6();
+        data[10] = getG4_1();
+        data[11] = getG4_2();
+        data[12] = getG4_3();
+        data[13] = getG4_4();
+        data[14] = getG5_1();
+        data[15] = getG5_2();
+        data[16] = getG5_3();
+        data[17] = getG5_4();
+        data[18] = getG5_5();
+        data[19] = getG5_6();
+        data[20] = getG6_1();
+        data[21] = getG6_2();
+        data[22] = getG6_3();
+        data[23] = getG7_1();
+        data[24] = getG7_2();
+        data[25] = getG7_3();
+        data[26] = getG7_4();
+        return data;
+
+    }
+
+    public void setData(int[] data) throws Exception {
         if (data.length != 27){
             throw new Exception("wrong size!!!!");
         }

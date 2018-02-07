@@ -13,7 +13,7 @@ public interface KQXSDataSource {
 
     void addKQXS(String date, int[] data, KQXSActionListener callback);
     void updateKQXS(String date, int[] data, KQXSActionListener callback);
-
+    void findKQXS(String date, KQXSActionListener callback);
 
     void destroy();
 

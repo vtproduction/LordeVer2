@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">Lorde Calculator</string>
+    <string name="dac_biet">Đặc biệt</string>
+    <string name="num_plh">46120</string>
+    <string name="giai_nhat">Giải nhất</string>
+    <string name="giai_nhi">Giải nhì</string>
+    <string name="giai_ba">giải ba</string>
+    <string name="giai_tu">giải tư</string>
+    <string name="giai_nam">Giải năm</string>
+    <string name="giai_sau">giải sáu</string>
+    <string name="giai_bay">Giải bày</string>
+    <string name="kqxs_ngay">Kết quả xổ số</string>
+    <string name="huy">Huỷ</string>
+    <string name="tao_moi">Tạo mới</string>
 </resources>

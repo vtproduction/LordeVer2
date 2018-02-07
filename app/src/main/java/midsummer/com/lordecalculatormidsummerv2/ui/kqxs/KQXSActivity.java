@@ -28,6 +28,7 @@ public class KQXSActivity extends BaseActivity implements DateCell.DateCellClick
 
 
     DateListFragment dateListFragment;
+    KQXSDetailFragment kqxsDetailFragment;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -41,8 +42,12 @@ public class KQXSActivity extends BaseActivity implements DateCell.DateCellClick
                 onBackPressed();
             }
         });
+        kqxsDetailFragment = KQXSDetailFragment.newInstance();
         getSupportFragmentManager().beginTransaction()
                 .add(R.id.container_list,dateListFragment,"dateList")
+                .commitNowAllowingStateLoss();
+        getSupportFragmentManager().beginTransaction()
+                .add(R.id.container_detail,kqxsDetailFragment,"kqxsDetail")
                 .commitNowAllowingStateLoss();
     }
 
@@ -50,5 +55,6 @@ public class KQXSActivity extends BaseActivity implements DateCell.DateCellClick
     @Override
     public void onDateClicked(DateTime dateTime) {
         LogUtil.d("onDateClicked: " + dateTime.toString());
+        kqxsDetailFragment.loadData(dateTime);
     }
 }

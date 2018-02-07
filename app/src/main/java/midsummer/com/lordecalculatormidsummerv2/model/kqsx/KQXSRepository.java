@@ -56,6 +56,26 @@ public class KQXSRepository implements KQXSDataSource {
     }
 
     @Override
+    public void findKQXS(final String date, final KQXSActionListener callback) {
+        RealmUtil.getRealm().executeTransaction(new Realm.Transaction() {
+            @Override
+            public void execute(Realm realm) {
+                try {
+                    KQXS kqxs = realm.where(KQXS.class).equalTo("date", date).findFirst();
+                    if (kqxs == null){
+                        callback.onAction(null);
+                        return;
+                    }
+                    callback.onAction(kqxs);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    callback.onAction(null);
+                }
+            }
+        });
+    }
+
+    @Override
     public void destroy() {
         RealmUtil.destroyRealm();
     }

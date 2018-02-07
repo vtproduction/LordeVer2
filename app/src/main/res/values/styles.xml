@@ -11,7 +11,7 @@
     <style name="KQXSText" parent="TextAppearance.AppCompat">
         <item name="android:background">@drawable/background_stroke_thin_black</item>
         <item name="android:gravity">center</item>
-        <item name="android:textSize">20dp</item>
+        <item name="android:textSize">18dp</item>
         <item name="android:textAllCaps">true</item>
         <item name="android:textStyle">bold</item>
     </style>

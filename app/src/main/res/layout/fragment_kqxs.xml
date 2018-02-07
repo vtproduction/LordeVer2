@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_1"
+    android:gravity="center"
+    android:padding="8dp">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="kqxs ngay thu 3 20/10/1992"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:id="@+id/txt_date"
+        android:layout_marginBottom="20dp"/>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:id="@+id/container_empty"
+        android:visibility="gone">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Chưa có kết quả!"
+            android:textSize="20sp"/>
+        <Button
+            android:layout_marginTop="20dp"
+            android:layout_width="200dp"
+            android:layout_height="60dp"
+            android:text="Thêm kết quả"
+            android:textSize="20sp"
+            android:padding="8dp"
+            android:id="@+id/btn_add_kqxs"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:id="@+id/container_kqxs"
+        android:background="@drawable/background_stroke_thin_black">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:layout_weight="0.2"
+                android:gravity="center"/>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:layout_weight="0.8"/>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

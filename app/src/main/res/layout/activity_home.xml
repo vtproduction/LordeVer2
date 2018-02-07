@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_20"
+    android:orientation="vertical"
+    android:gravity="center">
+
+    <Button
+        android:layout_width="300dp"
+        android:layout_height="80dp"
+        android:text="Kết quả xổ số"
+        android:layout_marginBottom="20dp"
+        android:id="@+id/btn_1"/>
+    <Button
+        android:layout_width="300dp"
+        android:layout_height="80dp"
+        android:text="Dữ liệu"
+        android:layout_marginBottom="10dp"
+        android:id="@+id/btn_2"/>
+    <Button
+        android:layout_width="300dp"
+        android:layout_height="80dp"
+        android:text="Người dùng"
+        android:layout_marginTop="10dp"
+        android:id="@+id/btn_3"/>
+
+    <Button
+        android:layout_width="300dp"
+        android:layout_height="80dp"
+        android:text="Cài đặt"
+        android:layout_marginTop="20dp"
+        android:id="@+id/btn_4"/>
+</LinearLayout>

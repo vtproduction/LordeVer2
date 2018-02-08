@@ -3,6 +3,7 @@ package midsummer.com.lordecalculatormidsummerv2.model.kqsx;
 import org.joda.time.DateTime;
 
 import io.realm.Realm;
+import midsummer.com.lordecalculatormidsummerv2.helper.LogUtil;
 import midsummer.com.lordecalculatormidsummerv2.helper.RealmUtil;
 
 /**
@@ -14,6 +15,7 @@ public class KQXSRepository implements KQXSDataSource {
 
     @Override
     public void addKQXS(final String date, final int[] data, final KQXSActionListener callback) {
+        LogUtil.d("addKQXS: " + date);
         RealmUtil.getRealm().executeTransaction(new Realm.Transaction() {
             @Override
             public void execute(Realm realm) {
@@ -35,6 +37,7 @@ public class KQXSRepository implements KQXSDataSource {
 
     @Override
     public void updateKQXS(final String date,final  int[] data,final  KQXSActionListener callback) {
+        LogUtil.d("updateKQXS: " + date);
         RealmUtil.getRealm().executeTransaction(new Realm.Transaction() {
             @Override
             public void execute(Realm realm) {

@@ -12,4 +12,9 @@
     <string name="kqxs_ngay">Kết quả xổ số</string>
     <string name="huy">Huỷ</string>
     <string name="tao_moi">Tạo mới</string>
+    <string name="chinh_sua">Sửa</string>
+    <string name="dau">đầu</string>
+    <string name="loto">Lô tô</string>
+    <string name="dit">đít</string>
+    <string name="nha_cai">- Nhà cái</string>
 </resources>

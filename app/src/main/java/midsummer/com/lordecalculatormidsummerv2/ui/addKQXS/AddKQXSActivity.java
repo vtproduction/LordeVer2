@@ -47,7 +47,10 @@ public class AddKQXSActivity extends BaseActivity {
     Button btnSubmit;
 
 
-    private 
+    public static final String ARGS_DATE = "Date";
+    public static final String ARGS_EDIT = "EDIDKQXS";
+    private String date;
+    private boolean isInEdit;
     private KQXSDataSource mDataSource;
 
     @Override
@@ -56,6 +59,10 @@ public class AddKQXSActivity extends BaseActivity {
         setContentView(R.layout.activity_add_kqxs);
         ButterKnife.bind(this);
         mDataSource = new KQXSRepository();
+        this.date = getIntent().getStringExtra(ARGS_DATE);
+        this.isInEdit = getIntent().getBooleanExtra(ARGS_EDIT, false);
+        txtDate.setText(getString(R.string.kqxs_ngay) + " " + DateTimeUtil.displayDayOfWeek(date) + ", " + date);
+        populateData();
     }
 
     @OnClick({R.id.btn_cancel, R.id.btn_submit})
@@ -70,17 +77,38 @@ public class AddKQXSActivity extends BaseActivity {
         }
     }
 
+    private void populateData(){
+        if (!isInEdit) return;
+        new KQXSRepository().findKQXS(date, new KQXSDataSource.KQXSActionListener() {
+            @Override
+            public void onAction(KQXS kqxs) {
+                if (kqxs == null) return;
+                for (int i = 0; i < kqxs.getData().length; i++)
+                    edtVals[i].setText(""+ kqxs.getData()[i]);
+            }
+        });
+    }
+
 
     private void onSubmit(){
         int[] data = new int[27];
         for (int i = 0; i < edtVals.length; i++)
             data[i] = Integer.parseInt(edtVals[i].getText().toString());
-        mDataSource.addKQXS(DateTimeUtil.displayShortDate(DateTime.now()),
-                data, new KQXSDataSource.KQXSActionListener() {
-                    @Override
-                    public void onAction(KQXS kqxs) {
-                        finish();
-                    }
-                });
+        if (!isInEdit)
+            mDataSource.addKQXS(date,
+                    data, new KQXSDataSource.KQXSActionListener() {
+                        @Override
+                        public void onAction(KQXS kqxs) {
+                            finish();
+                        }
+                    });
+        else
+            mDataSource.updateKQXS(date,
+                    data, new KQXSDataSource.KQXSActionListener() {
+                        @Override
+                        public void onAction(KQXS kqxs) {
+                            finish();
+                        }
+                    });
     }
 }

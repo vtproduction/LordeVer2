@@ -19,6 +19,8 @@
         <activity android:name=".ui.home.HomeActivity" />
         <activity android:name=".ui.kqxs.KQXSActivity" />
         <activity android:name=".ui.addKQXS.AddKQXSActivity" />
+        <activity android:name=".ui.merchant.MerchantListActivity" />
+        <activity android:name=".ui.merchant.AddNewMerchantActivity" />
     </application>
 
 </manifest>

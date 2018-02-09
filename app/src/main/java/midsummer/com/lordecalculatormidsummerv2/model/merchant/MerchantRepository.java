@@ -1,6 +1,7 @@
 package midsummer.com.lordecalculatormidsummerv2.model.merchant;
 
 import io.realm.Realm;
+import io.realm.RealmResults;
 import midsummer.com.lordecalculatormidsummerv2.helper.RealmUtil;
 
 /**
@@ -49,5 +50,17 @@ public class MerchantRepository implements MerchantDataSource {
     @Override
     public void destroy() {
         RealmUtil.destroyRealm();
+    }
+
+
+    @Override
+    public void loadAllMerchant(final MerchantListListener callback) {
+        RealmUtil.getRealm().executeTransaction(new Realm.Transaction() {
+            @Override
+            public void execute(Realm realm) {
+                RealmResults<Merchant> merchants = realm.where(Merchant.class).findAll();
+                callback.onLoaded(merchants);
+            }
+        });
     }
 }

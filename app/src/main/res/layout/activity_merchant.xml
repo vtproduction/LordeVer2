@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="@color/color_20"
+        android:padding="4dp">
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:id="@+id/btn_back"
+            android:text="@string/quay_lai"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:id="@+id/btn_add_merchant"
+            android:text="@string/them_moi"
+            android:layout_alignParentEnd="true"/>
+    </RelativeLayout>
+    <com.jaychang.srv.SimpleRecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="10dp"
+        android:id="@+id/recycler_view"
+        app:srv_gridSpanCount="2"/>
+</LinearLayout>

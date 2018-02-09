@@ -17,4 +17,16 @@
     <string name="loto">Lô tô</string>
     <string name="dit">đít</string>
     <string name="nha_cai">- Nhà cái</string>
+    <string name="de">Đề</string>
+    <string name="xien">Xiên</string>
+    <string name="lo">Lô</string>
+    <string name="quay_lai">Quay lại</string>
+    <string name="them_moi">Thêm mới</string>
+    <string name="them_moi_nguoi_dung">Thêm mới người dùng</string>
+    <string name="so_dien_thoai">Số điện thoại</string>
+    <string name="nha_cai_2">Nhà cái</string>
+    <string name="ti_le_de">Tỉ lệ đề</string>
+    <string name="ti_le_xien">Tỉ lệ xiên</string>
+    <string name="ti_le_lo">Tỉ lệ lô</string>
+    <string name="ten">Tên</string>
 </resources>

@@ -29,4 +29,6 @@
     <string name="ti_le_xien">Tỉ lệ xiên</string>
     <string name="ti_le_lo">Tỉ lệ lô</string>
     <string name="ten">Tên</string>
+    <string name="xoa">Xoá</string>
+    <string name="cap_nhat">Cập nhật</string>
 </resources>

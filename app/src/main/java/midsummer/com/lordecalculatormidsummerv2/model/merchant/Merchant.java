@@ -22,6 +22,18 @@ public class Merchant extends RealmObject {
     public float rateLO;
     public float rateXIEN;
 
+    public Merchant() {
+    }
+
+    public Merchant(long id, String name, String phoneNumber, boolean isHost, float rateDE, float rateLO, float rateXIEN) {
+        this.id = id;
+        this.name = name;
+        this.phoneNumber = phoneNumber;
+        this.isHost = isHost;
+        this.rateDE = rateDE;
+        this.rateLO = rateLO;
+        this.rateXIEN = rateXIEN;
+    }
 
     public long getId() {
         return id;

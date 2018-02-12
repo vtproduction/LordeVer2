@@ -18,11 +18,12 @@ public interface MerchantDataSource {
         void onLoaded(RealmResults<Merchant> merchants);
     }
 
-
+    void addMerchant(String name, String phone, boolean isHost, float rateDe, float rateLo, float rateXien, MerchantActionListener callback);
     void addMerchant(Merchant merchant, MerchantActionListener callback);
     void deleteMerchant(long merchantId, MerchantActionListener callback);
-    void updateMerchant(Merchant merchant, MerchantActionListener callback);
+    void updateMerchant(long merchantId, String name, String phone, boolean isHost, float rateDe, float rateLo, float rateXien, MerchantActionListener callback);
     void loadAllMerchant(MerchantListListener callback);
+    void loadMerchant(long merchantId,  MerchantActionListener callback);
     void destroy();
 
 }

@@ -21,10 +21,11 @@ import midsummer.com.lordecalculatormidsummerv2.model.merchant.Merchant;
  * Created by cityme on 2/9/18.
  */
 
-public class MerchantCell extends SimpleCell<Merchant, MerchantCell.ViewHolder> implements Updatable<Merchant>{
+public class MerchantCell extends SimpleCell<Merchant, MerchantCell.ViewHolder> implements Updatable<Merchant> {
 
-    public interface MerchantCellClickListener{
+    public interface MerchantCellClickListener {
         void onMerchantCellClicked(Merchant merchant);
+        void onMerchantDeleted(Merchant merchant);
     }
 
     private MerchantCellClickListener callback;
@@ -76,23 +77,23 @@ public class MerchantCell extends SimpleCell<Merchant, MerchantCell.ViewHolder> 
         TextView txtRateXien;
         @BindView(R.id.btn_edit)
         Button btnEdit;
+        @BindView(R.id.btn_delete)
+        Button btnDelete;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
+
         }
 
-        @OnClick(R.id.btn_edit)
-        public void onViewClicked() {
-            callback.onMerchantCellClicked(merchant);
-        }
 
         private Merchant merchant;
-        void updateCell(Merchant merchant){
+
+        void updateCell(Merchant merchant) {
             try {
                 this.merchant = merchant;
                 txtName.setText(merchant.getName());
-                txtIsHost.setVisibility(merchant.isHost()  ? View.VISIBLE : View.GONE);
+                txtIsHost.setVisibility(merchant.isHost() ? View.VISIBLE : View.GONE);
                 txtPhoneNumber.setText(merchant.getPhoneNumber());
                 txtRateDe.setText(merchant.getRateDE() + "");
                 txtRateLo.setText(merchant.getRateLO() + "");
@@ -101,5 +102,19 @@ public class MerchantCell extends SimpleCell<Merchant, MerchantCell.ViewHolder> 
                 e.printStackTrace();
             }
         }
+
+        @OnClick({R.id.btn_edit, R.id.btn_delete})
+        public void onViewClicked(View view) {
+            switch (view.getId()) {
+                case R.id.btn_edit:
+                    callback.onMerchantCellClicked(merchant);
+                    break;
+                case R.id.btn_delete:
+                    callback.onMerchantDeleted(merchant);
+                    break;
+            }
+        }
+
+
     }
 }

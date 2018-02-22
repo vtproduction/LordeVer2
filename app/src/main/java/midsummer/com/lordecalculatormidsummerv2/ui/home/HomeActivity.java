@@ -10,6 +10,7 @@ import butterknife.OnClick;
 import midsummer.com.lordecalculatormidsummerv2.R;
 import midsummer.com.lordecalculatormidsummerv2.base.BaseActivity;
 import midsummer.com.lordecalculatormidsummerv2.ui.kqxs.KQXSActivity;
+import midsummer.com.lordecalculatormidsummerv2.ui.merchant.MerchantListActivity;
 
 /**
  * Created by cityme on 2/7/18.
@@ -34,6 +35,7 @@ public class HomeActivity extends BaseActivity {
             case R.id.btn_2:
                 break;
             case R.id.btn_3:
+                startActivity(new Intent(this, MerchantListActivity.class));
                 break;
             case R.id.btn_4:
                 break;

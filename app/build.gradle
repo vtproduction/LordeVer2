@@ -40,4 +40,6 @@ dependencies {
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
     implementation 'com.squareup.picasso:picasso:2.5.2'
     implementation 'com.github.jaychang0917:SimpleRecyclerView:1.2.7'
+    implementation 'com.android.support:cardview-v7:26.1.0'
+    implementation 'com.afollestad.material-dialogs:core:0.9.6.0'
 }

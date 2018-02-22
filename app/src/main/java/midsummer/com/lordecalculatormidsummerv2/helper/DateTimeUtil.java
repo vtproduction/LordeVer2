@@ -40,8 +40,48 @@ public class DateTimeUtil {
         }
     }
 
+    public static DateTime shortDateStringToDate(String dateString){
+        try {
+            DateTimeFormatter formatter = DateTimeFormat.forPattern("dd-MM-yyyy")
+                    .withLocale(Locale.ROOT)
+                    .withChronology(ISOChronology.getInstanceUTC());
+
+            return formatter.parseDateTime(dateString);
+        }catch (Exception e){
+            LogUtil.e(e);
+            return DateTime.now();
+        }
+    }
+
     public static String displayDayOfWeek(DateTime dateTime){
         try {
+            switch (dateTime.getDayOfWeek()){
+                case 1:
+                    return "Thứ Hai";
+                case 2:
+                    return "Thứ Ba";
+                case 3:
+                    return "Thứ Tư";
+                case 4:
+                    return "Thứ Năm";
+                case 5:
+                    return "Thứ Sáu";
+                case 6:
+                    return "Thứ Bảy";
+                case 7:
+                    return "Chủ nhật";
+                default:
+                    return "";
+            }
+        }catch (Exception e){
+            LogUtil.e(e);
+            return "";
+        }
+    }
+
+    public static String displayDayOfWeek(String dateTimeString){
+        try {
+            DateTime dateTime = shortDateStringToDate(dateTimeString);
             switch (dateTime.getDayOfWeek()){
                 case 1:
                     return "Thứ Hai";

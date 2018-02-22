@@ -47,7 +47,7 @@ public class AddKQXSActivity extends BaseActivity {
     Button btnSubmit;
 
 
-    private 
+    private
     private KQXSDataSource mDataSource;
 
     @Override

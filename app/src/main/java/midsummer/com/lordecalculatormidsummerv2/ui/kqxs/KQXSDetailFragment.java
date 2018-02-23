@@ -156,6 +156,7 @@ public class KQXSDetailFragment extends BaseFragment {
                 String displayString = String.format(Locale.US, "%d%d; ", dauVal, ditVal);
                 /*txtDau[dauVal].append(tmp +"; ");
                 txtDit[ditVal].append(tmp +"; ");*/
+                LogUtil.d("dau dit: " + displayString);
                 txtDau[dauVal].setText(txtDau[dauVal].getText() + displayString);
                 txtDit[ditVal].setText(txtDit[ditVal].getText() + displayString);
             }

@@ -46,8 +46,9 @@ public class AddKQXSActivity extends BaseActivity {
     @BindView(R.id.btn_submit)
     Button btnSubmit;
 
+    public static final String ARGS_DATE = "Date";
+    public static final String ARGS_EDIT = "EDIDKQXS";
 
-    private
     private KQXSDataSource mDataSource;
 
     @Override
@@ -56,6 +57,7 @@ public class AddKQXSActivity extends BaseActivity {
         setContentView(R.layout.activity_add_kqxs);
         ButterKnife.bind(this);
         mDataSource = new KQXSRepository();
+        setInitialData();
     }
 
     @OnClick({R.id.btn_cancel, R.id.btn_submit})
@@ -75,12 +77,39 @@ public class AddKQXSActivity extends BaseActivity {
         int[] data = new int[27];
         for (int i = 0; i < edtVals.length; i++)
             data[i] = Integer.parseInt(edtVals[i].getText().toString());
-        mDataSource.addKQXS(DateTimeUtil.displayShortDate(DateTime.now()),
+        if (!getIntent().getBooleanExtra(ARGS_EDIT, false))
+            mDataSource.addKQXS(DateTimeUtil.displayShortDate(DateTime.now()),
                 data, new KQXSDataSource.KQXSActionListener() {
                     @Override
                     public void onAction(KQXS kqxs) {
                         finish();
                     }
                 });
+        else
+            mDataSource.updateKQXS(getIntent().getStringExtra(ARGS_DATE),
+                    data, new KQXSDataSource.KQXSActionListener() {
+                        @Override
+                        public void onAction(KQXS kqxs) {
+                            finish();
+                        }
+                    });
+    }
+
+
+    private void setInitialData(){
+        try {
+            if (!getIntent().getBooleanExtra(ARGS_EDIT, false)) return;
+            String date = getIntent().getStringExtra(ARGS_DATE);
+            mDataSource.findKQXS(date, new KQXSDataSource.KQXSActionListener() {
+                @Override
+                public void onAction(KQXS kqxs) {
+                    for (int i = 0; i < kqxs.getData().length; i++){
+                        edtVals[i].setText(""+ kqxs.getData()[i]);
+                    }
+                }
+            });
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

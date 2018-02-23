@@ -98,8 +98,10 @@ public class AddKQXSActivity extends BaseActivity {
 
     private void setInitialData(){
         try {
-            if (!getIntent().getBooleanExtra(ARGS_EDIT, false)) return;
             String date = getIntent().getStringExtra(ARGS_DATE);
+            txtDate.setText(getString(R.string.kqxs_ngay) + " " + date);
+            if (!getIntent().getBooleanExtra(ARGS_EDIT, false)) return;
+
             mDataSource.findKQXS(date, new KQXSDataSource.KQXSActionListener() {
                 @Override
                 public void onAction(KQXS kqxs) {

@@ -31,4 +31,10 @@
     <string name="ten">Tên</string>
     <string name="xoa">Xoá</string>
     <string name="cap_nhat">Cập nhật</string>
+    <string name="xien_quay">Xiên quay</string>
+    <string name="dau_dit">đầu đít</string>
+    <string name="so">Số</string>
+    <string name="gia_tri">Giá trị</string>
+    <string name="diem">Điểm</string>
+    <string name="nghin">Nghìn</string>
 </resources>

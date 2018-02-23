@@ -9,7 +9,9 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import midsummer.com.lordecalculatormidsummerv2.R;
 import midsummer.com.lordecalculatormidsummerv2.base.BaseActivity;
+import midsummer.com.lordecalculatormidsummerv2.ui.addLordeData.AddLordeDataActivity;
 import midsummer.com.lordecalculatormidsummerv2.ui.kqxs.KQXSActivity;
+import midsummer.com.lordecalculatormidsummerv2.ui.lordeData.LordeDataListActivity;
 import midsummer.com.lordecalculatormidsummerv2.ui.merchant.MerchantListActivity;
 
 /**
@@ -33,6 +35,7 @@ public class HomeActivity extends BaseActivity {
                 startActivity(new Intent(this, KQXSActivity.class));
                 break;
             case R.id.btn_2:
+                startActivity(new Intent(this, AddLordeDataActivity.class));
                 break;
             case R.id.btn_3:
                 startActivity(new Intent(this, MerchantListActivity.class));

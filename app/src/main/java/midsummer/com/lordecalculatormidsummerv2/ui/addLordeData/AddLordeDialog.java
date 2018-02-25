@@ -11,6 +11,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -24,6 +27,9 @@ import midsummer.com.lordecalculatormidsummerv2.model.kqld.LDType;
 
 public class AddLordeDialog extends DialogFragment {
 
+    public interface AddLordeDataListener{
+        void onAdded(int type, String[] numbers, float value);
+    }
 
     @BindView(R.id.txt_title)
     TextView txtTitle;
@@ -40,10 +46,12 @@ public class AddLordeDialog extends DialogFragment {
 
     private Unbinder unbinder;
     private int type;
+    private AddLordeDataListener callback;
 
-    public static AddLordeDialog newInstance(int type){
+    public static AddLordeDialog newInstance(int type, AddLordeDataListener callback){
         AddLordeDialog dialog = new AddLordeDialog();
         dialog.type = type;
+        dialog.callback = callback;
         return dialog;
     }
 
@@ -109,6 +117,20 @@ public class AddLordeDialog extends DialogFragment {
 
 
     public void onSubmit(){
+        try {
+            float value = Float.parseFloat(edtValue.getText().toString());
+            String[] numbers = edtNumbers.getText().toString().trim().split(" ");
+            if (numbers.length == 0) return;
+            callback.onAdded(type, numbers, value);
+            dismiss();
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+            dismiss();
+        }
 
     }
+
+
+
+
 }

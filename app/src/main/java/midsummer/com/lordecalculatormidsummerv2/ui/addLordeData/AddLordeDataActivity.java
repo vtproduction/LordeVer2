@@ -19,7 +19,7 @@ import midsummer.com.lordecalculatormidsummerv2.model.kqld.LDType;
  * Created by cityme on 2/23/18.
  */
 
-public class AddLordeDataActivity extends BaseActivity {
+public class AddLordeDataActivity extends BaseActivity implements AddLordeDialog.AddLordeDataListener{
 
 
     @BindView(R.id.btn_back)
@@ -90,11 +90,15 @@ public class AddLordeDataActivity extends BaseActivity {
 
 
     private void onAdd(int type){
-        dialog = AddLordeDialog.newInstance(type);
+        dialog = AddLordeDialog.newInstance(type, this);
         dialog.show(getSupportFragmentManager(),"dialog");
     }
 
 
+    @Override
+    public void onAdded(int type, String[] numbers, float value) {
+
+    }
 
     private void onSubmit(){
 

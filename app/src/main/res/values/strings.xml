@@ -37,4 +37,6 @@
     <string name="gia_tri">Giá trị</string>
     <string name="diem">Điểm</string>
     <string name="nghin">Nghìn</string>
+    <string name="du_lieu_sai">Dữ liệu sai!</string>
+    <string name="blank">BLANK!</string>
 </resources>

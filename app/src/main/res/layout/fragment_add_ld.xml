@@ -14,6 +14,15 @@
         android:id="@+id/txt_title"
         android:layout_marginBottom="20dp"/>
     <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/gia_tri"
+        android:layout_marginBottom="10dp"
+        android:textSize="18sp"
+        android:textColor="@android:color/holo_red_light"
+        android:id="@+id/txt_error"
+        android:visibility="gone"/>
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/so"

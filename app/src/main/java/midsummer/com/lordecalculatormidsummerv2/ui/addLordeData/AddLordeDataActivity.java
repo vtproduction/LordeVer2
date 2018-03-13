@@ -8,12 +8,16 @@ import android.widget.TextView;
 
 import com.jaychang.srv.SimpleRecyclerView;
 
+import java.util.Calendar;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import midsummer.com.lordecalculatormidsummerv2.R;
 import midsummer.com.lordecalculatormidsummerv2.base.BaseActivity;
+import midsummer.com.lordecalculatormidsummerv2.helper.LogUtil;
 import midsummer.com.lordecalculatormidsummerv2.model.kqld.LDType;
+import midsummer.com.lordecalculatormidsummerv2.ui.cell.LordeCell;
 
 /**
  * Created by cityme on 2/23/18.
@@ -96,8 +100,34 @@ public class AddLordeDataActivity extends BaseActivity implements AddLordeDialog
 
 
     @Override
-    public void onAdded(int type, String[] numbers, float value) {
+    public void onAdded(int type, String numbers, float value) {
+        String temp = "";
+        long id = Calendar.getInstance().getTimeInMillis();
+        recyclerView.addCell(new LordeCell(new LordeCell.ViewModel(id, type, numbers, value), new LordeCell.CellClickListener() {
+            @Override
+            public void onEdit(LordeCell.ViewModel viewModel) {
+                int j = -1;
+                for(int i = 0; i < recyclerView.getItemCount(); i++)
+                    if (((LordeCell.ViewModel)recyclerView.getCell(i).getItem()).getId() == viewModel.getId()){
+                        j = i;
+                        break;
+                    }
+                if (j != -1)
+                    recyclerView.updateCell(j, viewModel);
+            }
 
+            @Override
+            public void onDelete(LordeCell.ViewModel viewModel) {
+                int j = -1;
+                for(int i = 0; i < recyclerView.getItemCount(); i++)
+                    if (((LordeCell.ViewModel)recyclerView.getCell(i).getItem()).getId() == viewModel.getId()){
+                        j = i;
+                        break;
+                    }
+                if (j != -1)
+                    recyclerView.removeCell(j);
+            }
+        }));
     }
 
     private void onSubmit(){

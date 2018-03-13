@@ -1,5 +1,6 @@
 package midsummer.com.lordecalculatormidsummerv2.base;
 
+import android.content.pm.ApplicationInfo;
 import android.support.multidex.MultiDex;
 import android.support.multidex.MultiDexApplication;
 
@@ -11,11 +12,20 @@ import io.realm.Realm;
 
 public class MainApplication extends MultiDexApplication{
 
-
+    static MainApplication instance;
     @Override
     public void onCreate() {
         super.onCreate();
         MultiDex.install(this);
         Realm.init(this);
+        instance = this;
     }
+
+
+    public static MainApplication getInstance(){
+        return instance;
+    }
+
+
+
 }

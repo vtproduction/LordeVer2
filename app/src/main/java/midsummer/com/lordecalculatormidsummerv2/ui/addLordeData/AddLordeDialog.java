@@ -4,12 +4,16 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import org.apache.commons.lang3.math.NumberUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,7 +32,7 @@ import midsummer.com.lordecalculatormidsummerv2.model.kqld.LDType;
 public class AddLordeDialog extends DialogFragment {
 
     public interface AddLordeDataListener{
-        void onAdded(int type, String[] numbers, float value);
+        void onAdded(int type, String numbers, float value);
     }
 
     @BindView(R.id.txt_title)
@@ -43,6 +47,8 @@ public class AddLordeDialog extends DialogFragment {
     Button btnSubmit;
     @BindView(R.id.btn_cancel)
     Button btnCancel;
+    @BindView(R.id.txt_error)
+    TextView txtError;
 
     private Unbinder unbinder;
     private int type;
@@ -113,15 +119,38 @@ public class AddLordeDialog extends DialogFragment {
                 txtUnit.setText(R.string.nghin);
                 break;
         }
+        edtNumbers.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                txtError.setText("");
+                txtError.setVisibility(View.GONE);
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
     }
 
 
     public void onSubmit(){
         try {
             float value = Float.parseFloat(edtValue.getText().toString());
-            String[] numbers = edtNumbers.getText().toString().trim().split(" ");
+            String numberString = edtNumbers.getText().toString().trim();
+            String[] numbers = numberString.split(" ");
             if (numbers.length == 0) return;
-            callback.onAdded(type, numbers, value);
+            if (!isDataValid()) {
+                txtError.setText(getString(R.string.du_lieu_sai));
+                txtError.setVisibility(View.VISIBLE);
+                return;
+            }
+            callback.onAdded(type, numberString, value);
             dismiss();
         } catch (NumberFormatException e) {
             e.printStackTrace();
@@ -131,6 +160,27 @@ public class AddLordeDialog extends DialogFragment {
     }
 
 
+
+
+    private boolean isDataValid(){
+        try {
+            String[] numbers = edtNumbers.getText().toString().trim().split(" ");
+            if (numbers.length == 0 )return false;
+            for (String tmp : numbers){
+                if (LDType.isDauDit(type)){
+                    if (numbers.length > 1) return false;
+                    if (tmp.length() > 1) return false;
+                }else
+                    if (tmp.length() > 3 || tmp.length() < 2) return false;
+                if (!NumberUtils.isDigits(tmp)) return false;
+
+            }
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 
 
 }
